@@ -15,7 +15,8 @@
     "node": ">= 0.10.0"
   },
   "scripts": {
-    "pretest": "node test/webdriver-manager-update",
+    "postinstall": "bower install",
+    "pretest": "bower install && node test/webdriver-manager-update",
     "test": "grunt test"
   },
   "license": "MIT",
