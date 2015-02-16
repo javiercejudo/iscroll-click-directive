@@ -70,16 +70,14 @@ module.exports = function(grunt) {
     },
     protractor: {
       options: {
-        configFile: "test/conf.js",
-        keepAlive: true
+        configFile: "test/conf.js"
       },
       all: {},
     },
     connect: {
       server: {
         options: {
-          port: 9001,
-          keepAlive: true
+          port: 9001
         }
       }
     }
