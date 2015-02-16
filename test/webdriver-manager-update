@@ -11,5 +11,5 @@ var webdriverManagerPath = path.resolve(protractorMainPath, '../../bin/webdriver
 
 console.log("webdriver-manager path: " + webdriverManagerPath);
 
-fork(webdriverManagerPath, ["update"]);
+fork(webdriverManagerPath, ["update", '--standalone']);
 
