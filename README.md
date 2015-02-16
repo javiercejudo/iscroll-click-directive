@@ -2,6 +2,10 @@
 
 Custom click AngularJS directive for iScroll
 
+## Install
+
+    bower install --save-dev iscroll-click-directive
+
 ## Usage
 
 Please see the [provided example](test/fixtures/index.html).
