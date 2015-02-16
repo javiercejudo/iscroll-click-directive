@@ -1,30 +1,28 @@
 var url = 'http://localhost:9001/test/fixtures/';
 
-function getScrollerElement(id) {
-  return element(by.css('[href="#' + id + '"]'));
-}
+by.addLocator('hashInScrollList', function(hash) {
+  var element = document.querySelector('[href="#' + hash + '"]');
 
-function getHeaderText() {
-  return element(by.id('header-message')).getText();
-}
+  return [element];
+});
 
 describe('iscroll-click-directive', function() {
   beforeEach(function() {
     browser.get(url);
   });
 
-  it('should not inadvertently click after finishing dragging', function() {
-    getScrollerElement('05').click();
+  it('should perform the action in the expression', function() {
+    element(by.hashInScrollList('05')).click();
 
-    expect(getHeaderText()).toEqual('hello 05!');
+    expect(element(by.id('header-message')).getText()).toEqual('hello 05!');
   });
 
-  it('should perform the action in the expression', function() {
+  it('should not inadvertently click after finishing dragging', function() {
     var driver = browser.driver;
 
     driver.actions()
-      .mouseDown(getScrollerElement('12'))
-      .mouseMove(getScrollerElement('08'))
+      .mouseDown(element(by.hashInScrollList('12')))
+      .mouseMove(element(by.hashInScrollList('08')))
       .mouseUp().perform();
 
     expect(browser.getLocationAbsUrl()).toBe('');
