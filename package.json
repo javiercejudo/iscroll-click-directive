@@ -16,7 +16,7 @@
   },
   "scripts": {
     "postinstall": "bower install",
-    "pretest": "bower install && node test/webdriver-manager-update",
+    "pretest": "node test/webdriver-manager-update",
     "test": "grunt test"
   },
   "license": "MIT",
