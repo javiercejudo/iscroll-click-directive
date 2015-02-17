@@ -8,4 +8,4 @@ Custom click AngularJS directive for iScroll
 
 ## Usage
 
-Please see the [provided example](test/fixtures/index.html).
+Please see the [provided example](test/fixtures/index.html) or [visit the demo](https://iscroll-click-directive.herokuapp.com/).
