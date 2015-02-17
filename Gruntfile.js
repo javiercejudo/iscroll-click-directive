@@ -68,6 +68,39 @@ module.exports = function(grunt) {
         tasks: ['jshint:src_test']
       }
     },
+    copy: {
+      test: {
+        files: [{
+          expand: true,
+          flatten: true,
+          src: [
+            'src/<%= pkg.name %>.js',
+          ],
+          dest: 'test/fixtures',
+          filter: 'isFile'
+        }]
+      },
+      dropbox: {
+        files: [{
+          expand: true,
+          flatten: true,
+          src: [
+            'heroku/*',
+            'test/fixtures/*',
+          ],
+          dest: '../../Dropbox/Apps/Heroku/<%= pkg.name %>',
+          filter: 'isFile'
+        }, {
+          expand: true,
+          cwd: 'test/fixtures/vendor',
+          src: [
+            '**/{angular,iscroll}.js',
+          ],
+          dest: '../../Dropbox/Apps/Heroku/<%= pkg.name %>/vendor',
+          filter: 'isFile'
+        }]
+      }
+    },
     protractor: {
       options: {
         configFile: "test/conf.js"
@@ -85,6 +118,7 @@ module.exports = function(grunt) {
 
   // These plugins provide necessary tasks.
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -93,6 +127,7 @@ module.exports = function(grunt) {
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
-  grunt.registerTask('test', ['connect', 'protractor']);
+  grunt.registerTask('test', ['copy:test', 'connect', 'protractor']);
+  grunt.registerTask('copy-demo-to-dropbox', ['copy:test', 'copy:dropbox']);
 
 };

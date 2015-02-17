@@ -21,7 +21,6 @@ describe('iscroll-click-directive', function() {
 
   it('should perform the action in the expression', function() {
     element(by.hashInScrollList('05')).click();
-
     expect(element(by.id('header-message')).getText()).toEqual('hello 05!');
   });
 
