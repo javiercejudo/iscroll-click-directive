@@ -174,7 +174,7 @@
       angular.module('myApp', ['jcIScroll'])
 
         .run(['jcIScroll', function(jcIScroll) {
-          jcIScroll.instance = new IScroll('#wrapper', { mouseWheel: true });
+          jcIScroll.instance = new IScroll('#wrapper', { mouseWheel: true, click: true });
         }])
 
         .controller('scrollerController', [function() {

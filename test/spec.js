@@ -25,12 +25,12 @@ describe('iscroll-click-directive', function() {
   });
 
   it('should not inadvertently click after finishing dragging', function() {
-    dragList(driver, '12', '08');
+    dragList(driver, '08', '12');
     expect(browser.getLocationAbsUrl()).toBe('');
   });
 
   it('should inadvertently click after finishing dragging when the directive is not used', function() {
-    dragList(driver, '50', '46');
+    dragList(driver, '46', '50');
     expect(browser.getLocationAbsUrl()).toBe('/50');
   });
 });
