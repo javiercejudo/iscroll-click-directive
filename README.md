@@ -4,7 +4,7 @@ Custom click AngularJS directive for iScroll. It helps work around accidental cl
 
 ## When to use it
 
-Before using this, you should check if `options.click` and/or `options.preventDefault` set to `true` fixes unintendid clicks. If for some reason that isn't possible for your case, then that's when you use this.
+Before using this, you should check if `options.click` and/or `options.preventDefault` set to `true` fixes unintendid clicks ([official docs](http://iscrolljs.com/)). If for some reason that isn't possible for your case, then that's when you use this.
 
 ## Install
 
