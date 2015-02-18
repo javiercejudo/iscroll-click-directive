@@ -1,11 +1,10 @@
 var url = 'http://localhost:9001/test/fixtures/',
     driver = browser.driver;
 
-function dragList(driver, from, to) {
+function dragList(driver, from) {
   driver.actions()
-    .mouseDown(element(by.hashInScrollList(from)))
-    .mouseMove(element(by.hashInScrollList(to)))
-    .mouseUp().perform();
+    .dragAndDrop(element(by.hashInScrollList(from)), {x: -20, y: 0})
+    .perform();
 }
 
 by.addLocator('hashInScrollList', function(hash) {
@@ -25,7 +24,12 @@ describe('iscroll-click-directive', function() {
   });
 
   it('should not inadvertently click after finishing dragging', function() {
-    dragList(driver, '11', '10');
+    dragList(driver, '09');
     expect(browser.getLocationAbsUrl()).toBe('');
+  });
+
+  it('should not inadvertently click after finishing dragging', function() {
+    dragList(driver, '10');
+    expect(browser.getLocationAbsUrl()).toBe('/10');
   });
 });
