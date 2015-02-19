@@ -28,7 +28,7 @@ describe('iscroll-click-directive', function() {
     expect(browser.getLocationAbsUrl()).toBe('');
   });
 
-  it('should not inadvertently click after finishing dragging', function() {
+  it('should inadvertently click after finishing dragging with a regular ng-click', function() {
     dragList(driver, '10');
     expect(browser.getLocationAbsUrl()).toBe('/10');
   });
